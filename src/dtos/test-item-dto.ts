@@ -1,0 +1,3 @@
+interface TestItemDTO {
+  name: string;
+}
