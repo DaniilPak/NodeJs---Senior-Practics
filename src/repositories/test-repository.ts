@@ -8,9 +8,18 @@ import { testQuery } from '../models/test-model';
 @injectable()
 export class TestRepository implements IRepository<ITestItem> {
   async get(id: string): Promise<ITestItem> {
-    const testItem: ITestItem = testQuery[0];
+    try {
+      const testItem = testQuery.find((item) => item.id === id);
 
-    return testItem;
+      if (!testItem) {
+        throw new Error(`Item with ID ${id} not found.`);
+      }
+
+      return testItem;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
   }
 
   async getAll(): Promise<ITestItem[]> {

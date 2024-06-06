@@ -7,4 +7,5 @@ module.exports = {
   },
   // Automatically clear mock calls and instances between every test
   clearMocks: true,
+  setupFilesAfterEnv: ['<rootDir>/jest.global-setup.ts'],
 };
